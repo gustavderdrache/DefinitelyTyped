@@ -408,7 +408,7 @@ declare module d3 {
     /**
      * Re-inserts elements so that the document order matches the selection order.
      */
-    order();
+    order(): selection<T>;
 
     /**
      * Returns the listener function (if any) for the named DOM event.
@@ -426,12 +426,12 @@ declare module d3 {
      * @param listener The function to run, or null to deregister
      * @param capture Corresponds to the DOM useCapture flag
      */
-    on(type: string, listener: (datum: T, index: number) => void, capture?: boolean);
+    on(type: string, listener: (datum: T, index: number) => void, capture?: boolean): selection<T>;
 
     /**
      * Begins a transition for the selection, animating changes to elements over time.
      */
-    transition(): selection<T>;
+    transition(): transition<T>;
 
     /**
      * Interrupts the current transition, if any.
@@ -961,7 +961,7 @@ declare module d3 {
       /**
        * Re-inserts elements so that the document order matches the selection order.
        */
-      order();
+      order(): update<T>;
 
       /**
        * Returns the listener function (if any) for the named DOM event.
@@ -979,7 +979,7 @@ declare module d3 {
        * @param listener The function to run, or null to deregister
        * @param capture Corresponds to the DOM useCapture flag
        */
-      on(type: string, listener: (datum: T, index: number) => void, capture?: boolean);
+      on(type: string, listener: (datum: T, index: number) => void, capture?: boolean): update<T>;
 
       /**
        * Begins a transition for the selection, animating changes to elements over time.
@@ -1661,7 +1661,7 @@ declare module d3 {
     /**
      * Returns an array of objects, each with a key and value property.
      */
-    entries(): { key: string, value: T }[];
+    entries(): { key: string; value: T }[];
 
     /**
      * Calls the given function for each entry in the map. The function
@@ -1834,7 +1834,7 @@ declare module d3 {
      *
      * @param func The rollup function
      */
-    rollup(func: (values: T[]) => any);
+    rollup(func: (values: T[]) => any): nest<T>;
 
     /**
      * Applies the nest operator to the given array of values. The returned
